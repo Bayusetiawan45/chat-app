@@ -11,6 +11,7 @@ export const FlexCol = styled(Flex)`
 export const FlexAlignCenter = styled(Flex)`
   align-items: center;
 `
+
 export const FlexRowBetween = styled(Flex)`
   justify-content: space-between;
 `

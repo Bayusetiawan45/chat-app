@@ -50,7 +50,7 @@ export default function Background({ children }: BackgroundProps) {
         </div>
       </div>
       <div className="content flex flex-col">
-        <p>Bayu Setiawan</p>
+        <p>CHAT APP</p>
       </div>
     </div>
   )

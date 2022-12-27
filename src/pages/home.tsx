@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import HomeContent from '../components/pages-components/home';
+import { useAuth } from '../services/auth/auth';
 
 const Home = () => {
+  const navigate = useNavigate()
+  const { login } = useAuth()
   const [data, setData] = useState({
     email: '',
     password: ''
@@ -15,13 +19,16 @@ const Home = () => {
     }))
   }
 
-  const handleSubmitForm = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(data);
+    const {email, password} = data
+    if (email !== '' && password !== '') {
+      login(data)
+    }
   }
 
   return (
-    <HomeContent onChange={handleInputChange} />
+    <HomeContent onChange={handleInputChange} onSubmit={handleSubmitForm} />
   );
 };
 

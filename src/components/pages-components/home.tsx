@@ -1,15 +1,18 @@
 import styled from '@emotion/styled';
 import { Button, InputBase } from '@mui/material';
+import React from 'react';
 import { colors } from '../../assets/colors';
 import Background from '../atoms/background';
-import { FlexCol } from '../atoms/flex';
 import { Text } from '../atoms/text';
 
 interface HomeContentProps {
   onChange(e: React.ChangeEvent<HTMLInputElement>): void 
+  onSubmit(e: React.FormEvent<HTMLFormElement>): void
 }
 
-const ContainerForm = styled(FlexCol)`
+const ContainerForm = styled.form`
+  display: flex;
+  flex-direction: column;
   background: transparant;
   max-width: 300px;
   padding: 30px;
@@ -32,24 +35,27 @@ const CustomButton = styled(Button)`
 `
 
 const HomeContent = (props: HomeContentProps) => {
-  const { onChange } = props
+  const { onChange, onSubmit } = props
   return (
     <Background>
-      <ContainerForm>
+      <ContainerForm onSubmit={onSubmit}>
         <Text color={colors.white} fsize={18} fontWeight={700}>LOGIN</Text>
         <LoginInput
           placeholder='Your Email'
           type='email'
+          name='email'
           onChange={onChange}
         />
         <LoginInput
           placeholder='Your Password'
           type='password'
+          name='password'
           onChange={onChange}
         />
         <CustomButton
           variant="outlined"
           color="secondary"
+          type="submit"
         >
           Login
         </CustomButton>
